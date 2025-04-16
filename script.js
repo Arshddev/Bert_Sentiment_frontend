@@ -25,7 +25,7 @@ async function analyzeSentiment() {
         const predictions = JSON.parse(result.body);
         const sentiment = predictions[0].label;
         const score = predictions[0].score;
-        resultText.innerText = `Sentiment: ${sentiment} (Confidence: ${score.toFixed(2)})`;
+        resultText.innerText = `Sentiment: ${(sentiment == 'LABEL_2' ? 'Positive' : sentiment == 'LABEL_1' ? 'Neutral' : 'Negative')} (Confidence: ${score.toFixed(2)})`;
 
         resultBox.style.display = "block";
     } catch (error) {
