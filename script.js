@@ -22,7 +22,10 @@ async function analyzeSentiment() {
         });
 
         const result = await response.json();
-        resultText.innerText = `Sentiment: ${result.sentiment} (Confidence: ${result.score.toFixed(2)})`;
+        const predictions = JSON.parse(result.body);
+        const sentiment = predictions[0].label;
+        const score = predictions[0].score;
+        resultText.innerText = `Sentiment: ${sentiment} (Confidence: ${score.toFixed(2)})`;
 
         resultBox.style.display = "block";
     } catch (error) {
