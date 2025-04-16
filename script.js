@@ -28,6 +28,7 @@ async function analyzeSentiment() {
     } catch (error) {
         resultText.innerText = "⚠️ Error analyzing sentiment. Please try again.";
         resultBox.style.display = "block";
+        console.error("Error during fetch:", error);
     } finally {
         loading.style.display = "none";
     }
